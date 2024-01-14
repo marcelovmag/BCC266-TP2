@@ -3,10 +3,10 @@
 
 typedef struct alu
 {
-    int a, b, s; 
+    float a, b, acc; 
 } ALU;
 
-float getSaida(ALU*);
+float getACC(ALU*);
 
 void setA(ALU*, float);
 
@@ -20,10 +20,10 @@ void multiplica(ALU*);
 
 void divide(ALU*);
 
+void resto(ALU*);
+
 void igual(ALU*);
 
-void maior(ALU*);
-
-void maiorigual(ALU*);
+void menor(ALU*);
 
 #endif // ALU_H

@@ -1,7 +1,7 @@
 #include "ALU.h"
 
-float getSaida(ALU* alu) {
-    return alu->s;
+float getACC(ALU* alu) {
+    return alu->acc;
 }
 
 void setA(ALU* alu, float a) {
@@ -13,29 +13,29 @@ void setB(ALU* alu, float b) {
 }
 
 void soma(ALU* alu) {
-    alu->s = alu->a + alu->b;
+    alu->acc = alu->a + alu->b;
 }
 
 void subtrai(ALU* alu) {
-    alu->s = alu->a - alu->b;
+    alu->acc = alu->a - alu->b;
 }
 
 void multiplica(ALU* alu) {
-    alu->s = alu->a * alu->b;
+    alu->acc = alu->a * alu->b;
 }
 
 void divide(ALU* alu) {
-    alu->s = alu->a / alu->b;
+    alu->acc = alu->a / alu->b;
+}
+
+void resto(ALU* alu) {
+    alu->acc = (int) alu->a % (int) alu->b;
 }
 
 void igual(ALU* alu) {
-    alu->s = alu->a == alu->b;
+    alu->acc = alu->a == alu->b;
 }
 
-void maior(ALU* alu) {
-    alu->s = alu->a > alu->b;
-}
-
-void maiorigual(ALU* alu) {
-    alu->s = alu->a >= alu->b;
+void menor(ALU* alu) {
+    alu->acc = alu->a < alu->b;
 }

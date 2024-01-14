@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 typedef struct banco_registradores {
-    float banco[16];
+    float registrador[16];
 } BancoReg;
 
 #endif
