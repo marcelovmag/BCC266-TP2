@@ -8,6 +8,8 @@ typedef struct memoria_instrucoes {
     int linha;
 } MInst;
 
+int contaLinhas(FILE*);
+
 void guardaPrograma(FILE*, MInst**);
 
 void liberaMemoriaInst(MInst**);
