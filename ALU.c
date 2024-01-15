@@ -1,4 +1,4 @@
-#include "libs/ALU.h"
+#include "ALU.h"
 
 float getACC(ALU* alu) {
     return alu->acc;

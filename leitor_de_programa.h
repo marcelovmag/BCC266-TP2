@@ -5,7 +5,6 @@
 #include "banco_registradores.h"
 #include "memoria_instrucoes.h"
 #include "memoria_principal.h"
-#include "opcodes.h"
 
 typedef struct leitor_de_programa
 {
@@ -21,5 +20,29 @@ typedef struct leitor_de_programa
 } Leitor;
 
 void executaPrograma(Leitor* leitor);
+
+void add(Leitor*, int, int);
+
+void sub(Leitor*, int, int);
+
+void mul(Leitor*, int, int);
+
+void divi(Leitor*, int, int);
+
+void rem(Leitor*, int, int);
+
+
+void sto(Leitor*, int);
+
+void sti(Leitor*, int, float);
+
+
+void beq(Leitor*, int, int, int);
+
+void blt(Leitor*, int, int, int);
+
+void jmp(Leitor*, int);
+
+void dsp(Leitor*);
 
 #endif // leitor_de_programa_H

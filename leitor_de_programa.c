@@ -1,4 +1,4 @@
-#include "libs/leitor_de_programa.h"
+#include "leitor_de_programa.h"
 #include <string.h>
 #include <stdlib.h>
 
@@ -8,6 +8,9 @@
 
 void executaPrograma(Leitor* leitor) {
     
+    linha = 0;
+    n = contaLinhas(leitor->programa);
+
     char opc[4];
 
     while (linha < n)

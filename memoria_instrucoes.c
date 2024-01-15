@@ -1,4 +1,4 @@
-#include "libs/memoria_instrucoes.h"
+#include "memoria_instrucoes.h"
 
 int contaLinhas(FILE* programa) {
     int count = 0;

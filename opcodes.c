@@ -1,50 +1,50 @@
-#include "libs/opcodes.h"
+#include "leitor_de_programa.h"
 
 #define ALU leitor->alu
-#define R1 leitor->banco->registrador[r1]
-#define R2 leitor->banco->registrador[r2]
+#define R1 leitor->banco->registrador[re1]
+#define R2 leitor->banco->registrador[re2]
 
-void add(Leitor* leitor, int r1, int r2) {
+void add(Leitor* leitor, int re1, int re2) {
     setA(ALU, R1);
     setB(ALU, R2);
     soma(ALU);
 }
 
-void sub(Leitor* leitor, int r1, int r2) {
+void sub(Leitor* leitor, int re1, int re2) {
     setA(ALU, R1);
     setB(ALU, R2);
     subtrai(ALU);
 }
 
-void mul(Leitor* leitor, int r1, int r2) {
+void mul(Leitor* leitor, int re1, int re2) {
     setA(ALU, R1);
     setB(ALU, R2);
     multiplica(ALU);
 }
 
-void divi(Leitor* leitor, int r1, int r2) {
+void divi(Leitor* leitor, int re1, int re2) {
     setA(ALU, R1);
     setB(ALU, R2);
     divide(ALU);
 }
 
-void rem(Leitor* leitor, int r1, int r2) {
+void rem(Leitor* leitor, int re1, int re2) {
     setA(ALU, R1);
     setB(ALU, R2);
     resto(ALU);
 }
 
 
-void sto(Leitor* leitor, int r1) {
+void sto(Leitor* leitor, int re1) {
     R1 = getACC(ALU);
 }
 
-void sti(Leitor* leitor, int r1, float valor) {
+void sti(Leitor* leitor, int re1, float valor) {
     R1 = valor;
 }
 
 
-void beq(Leitor* leitor, int r1, int r2, int linha) {
+void beq(Leitor* leitor, int re1, int re2, int linha) {
     setA(ALU, R1);
     setB(ALU, R2);
     igual(ALU);
@@ -53,7 +53,7 @@ void beq(Leitor* leitor, int r1, int r2, int linha) {
         leitor->linha = linha - 1;
 }
 
-void blt(Leitor* leitor, int r1, int r2, int linha) {
+void blt(Leitor* leitor, int re1, int re2, int linha) {
     setA(ALU, R1);
     setB(ALU, R2);
     menor(ALU);
