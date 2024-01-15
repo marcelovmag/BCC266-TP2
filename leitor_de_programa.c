@@ -137,7 +137,7 @@ void executaPrograma(Leitor* leitor) {
             int r1 = atoi(arg1);
             int r2 = atoi(arg2);
 
-            div(leitor, r1, r2); // Executa a funcao relativa ao opcode com os devidos argumentos 
+            divi(leitor, r1, r2); // Executa a funcao relativa ao opcode com os devidos argumentos 
         }
 
         else if (!strcmp(opc, "REM"))

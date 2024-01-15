@@ -22,7 +22,7 @@ void mul(Leitor* leitor, int r1, int r2) {
     multiplica(ALU);
 }
 
-void div(Leitor* leitor, int r1, int r2) {
+void divi(Leitor* leitor, int r1, int r2) {
     setA(ALU, R1);
     setB(ALU, R2);
     divide(ALU);

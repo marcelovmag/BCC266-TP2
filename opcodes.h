@@ -9,7 +9,7 @@ void sub(Leitor*, int, int);
 
 void mul(Leitor*, int, int);
 
-void div(Leitor*, int, int);
+void divi(Leitor*, int, int);
 
 void rem(Leitor*, int, int);
 
