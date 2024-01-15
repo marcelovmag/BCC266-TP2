@@ -72,3 +72,11 @@ void jmp(Leitor* leitor, int linha) {
 void dsp(Leitor* leitor) {
     printf("\n%.3f", getACC(ALU));
 }
+
+void whd(Leitor* leitor, int re1, int re2) {
+    write(leitor->memoriaPrincipal, R2, 1, &(R1));
+} // escreve na memória principal, no endereço , o conteúdo do registrador re1
+
+void rhd(Leitor* leitor, int re1, int re2) {
+    read(leitor->memoriaPrincipal, R2, 1, &(R1));
+} // le na memoria principal o float de endereço "i" e o armazena no registrador re1

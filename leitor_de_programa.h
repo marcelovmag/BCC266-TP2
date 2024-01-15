@@ -45,4 +45,8 @@ void jmp(Leitor*, int);
 
 void dsp(Leitor*);
 
+void whd(Leitor*, int, int);
+
+void rhd(Leitor*, int, int);
+
 #endif // leitor_de_programa_H

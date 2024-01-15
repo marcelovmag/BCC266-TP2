@@ -12,8 +12,8 @@ void inicializa(MP*);
 
 void fecha(MP*);
 
-int read(MP*, int, int, float*);
+int read(MP*, float, int, float*);
 
-int write(MP*, int, int, float*);
+int write(MP*, float, int, float*);
 
 #endif

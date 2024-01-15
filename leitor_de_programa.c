@@ -333,6 +333,71 @@ void executaPrograma(Leitor* leitor) {
             dsp(leitor);
         }
 
+        else if (!strcmp(opc, "WHD"))
+        {
+            char arg1[10], arg2[10]; // Os 2 argumentos necessarios para o opcode WHD
+            int i1 = 0, i2 = 0; // Indices para cada uma das strings "arg"
+
+            while (comando[linha][i] != ' ' && comando[linha][i] != '\n' && comando[linha][i] != '\0') // testa o fim do argumento
+            {
+                arg1[i1] = comando[linha][i];
+
+                i++; // Incrementa o indice da string do comando inteiro
+                i1++; // Incrementa o indice da string do argumento
+            }
+            arg1[i1] = '\0'; // Finaliza a string
+            i++;
+
+            while (comando[linha][i] != ' ' && comando[linha][i] != '\n' && comando[linha][i] != '\0') // testa o fim do argumento
+            { 
+                arg2[i2] = comando[linha][i];
+
+                i++; // Incrementa o indice da string do comando inteiro
+                i2++; // Incrementa o indice da string do argumento
+            }
+            arg2[i2] = '\0'; // Finaliza a string
+
+            int r1 = atoi(arg1);
+            int i = atoi(arg2);
+
+            whd(leitor, r1, i); // Executa a funcao relativa ao opcode com os devidos argumentos 
+        }
+
+        else if (!strcmp(opc, "RHD"))
+        {
+            char arg1[10], arg2[10]; // Os 2 argumentos necessarios para o opcode RHD
+            int i1 = 0, i2 = 0; // Indices para cada uma das strings "arg"
+
+            while (comando[linha][i] != ' ' && comando[linha][i] != '\n' && comando[linha][i] != '\0') // testa o fim do argumento
+            {
+                arg1[i1] = comando[linha][i];
+
+                i++; // Incrementa o indice da string do comando inteiro
+                i1++; // Incrementa o indice da string do argumento
+            }
+            arg1[i1] = '\0'; // Finaliza a string
+            i++;
+
+            while (comando[linha][i] != ' ' && comando[linha][i] != '\n' && comando[linha][i] != '\0') // testa o fim do argumento
+            { 
+                arg2[i2] = comando[linha][i];
+
+                i++; // Incrementa o indice da string do comando inteiro
+                i2++; // Incrementa o indice da string do argumento
+            }
+            arg2[i2] = '\0'; // Finaliza a string
+
+            int r1 = atoi(arg1);
+            int i = atoi(arg2);
+
+            rhd(leitor, r1, i); // Executa a funcao relativa ao opcode com os devidos argumentos 
+        }
+
+        else if (!strcmp(opc, "// ")) 
+        {
+            // é comentario
+        }
+        
         else
             printf("\nComando inválido. Linha: %d. Comando: \"%s\"", linha, opc);
         

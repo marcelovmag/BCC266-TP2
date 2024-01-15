@@ -1,20 +1,24 @@
 STI 0 0 
 STI 1 1   
-STI 2 7 
+STI 2 7 // percorre os numeros de 8 a 100
 STI 3 2 
 STI 4 3
 STI 5 5
-STI 6 7
-STI 7 100
+STI 6 4 // contador de n primos
+STI 7 100 // limite de iteracoes
 ADD 3 0
 DSP
+WHD 3 0
 ADD 4 0
 DSP
+WHD 4 1
 ADD 5 0
 DSP
-ADD 6 0
+WHD 5 3
+ADD 2 0
 DSP
-ADD 2 1
+WHD 2 4
+ADD 2 1 // incrementa para percorrer até o numero 100
 STO 2
 BEQ 7 2 35
 REM 2 3  
@@ -25,11 +29,14 @@ REM 2 5
 STO 10
 REM 2 6  
 STO 11
-BEQ 8 0 17
-BEQ 9 0 17
-BEQ 10 0 17
-BEQ 11 0 17
+BEQ 8 0 21
+BEQ 9 0 21
+BEQ 10 0 21
+BEQ 11 0 21
 ADD 2 0
 DSP   
-JMP 17
+WHD 2 6 // armazena no endereco de acordo com o contador
+ADD 6 1 // incrementa o contador
+STO 6
+JMP 21
 STI 0 0

@@ -10,7 +10,9 @@ void fecha(MP* mp) {
     mp->count = 0;
 } // encerra o acesso à memória principal (fecha o arquivo)
 
-int read(MP* mp, int i, int tam, float* output) {
+int read(MP* mp, float ifloat, int tam, float* output) {
+    int i = (int) ifloat;
+
     if(i >= 2048)
         return 0;
 
@@ -20,9 +22,11 @@ int read(MP* mp, int i, int tam, float* output) {
     fread(output, sizeof(float), tam, mp->memoria);
 
     return 1;
-} // le o "i-esimo" float armazenado na memoria principal e retorna-os a partir do ponteiro output
+} // le tam floats a partir do "i-esimo" float armazenado na memoria principal e retorna-os a partir do ponteiro output
 
-int write(MP* mp, int i, int tam, float* input) {
+int write(MP* mp, float ifloat, int tam, float* input) {
+    int i = (int) ifloat;
+
     if (mp->count + tam >= 2048)
         return 0;
     
@@ -34,4 +38,4 @@ int write(MP* mp, int i, int tam, float* input) {
 
     return 1;
     
-} // escreve i floats armazenados a partir do ponteiro input
+} // escreve tam floats armazenados a partir do ponteiro input na i-esima posicao da memoria principal
