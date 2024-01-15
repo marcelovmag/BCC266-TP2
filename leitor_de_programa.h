@@ -8,16 +8,16 @@
 
 typedef struct leitor_de_programa
 {
-    FILE* programa;
-
     ALU* alu;
     BancoReg* banco;
 
     MInst* minst;
-    int linha, n;
+    int linha;
 
     MP* memoriaPrincipal;
 } Leitor;
+
+Leitor newLeitor(ALU*, BancoReg*, MInst*, MP*);
 
 void executaPrograma(Leitor* leitor);
 

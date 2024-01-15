@@ -5,13 +5,12 @@
 #include <stdio.h>
 
 typedef struct memoria_instrucoes {
-    char* comando;
+    char** comando;
+    int n;
 } MInst;
 
-int contaLinhas(FILE*);
+void guardaPrograma(char*, MInst*);
 
-void guardaPrograma(FILE*, MInst**);
-
-void liberaMemoriaInst(MInst**);
+void liberaMemoriaInst(MInst*);
 
 #endif

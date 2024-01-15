@@ -2,14 +2,18 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define MI leitor->minst
+#define comando leitor->minst->comando
 #define linha leitor->linha
-#define n leitor->n
+#define n leitor->minst->n
+
+Leitor newLeitor(ALU* alu, BancoReg* banco, MInst* mi, MP* mp) {
+    Leitor leitor = {alu, banco, mi, 0, mp};
+    return leitor;
+}
 
 void executaPrograma(Leitor* leitor) {
     
     linha = 0;
-    n = contaLinhas(leitor->programa);
 
     char opc[4];
 
@@ -17,7 +21,7 @@ void executaPrograma(Leitor* leitor) {
     {   
         for (int i = 0; i < 3; i++)
         {
-            opc[i] = MI[linha].comando[i];
+            opc[i] = comando[linha][i];
         }
         opc[4] = '\0';
 
@@ -28,9 +32,9 @@ void executaPrograma(Leitor* leitor) {
             char arg1[10], arg2[10]; // Os 2 argumentos necessarios para o opcode ADD
             int i1 = 0, i2 = 0; // Indices para cada uma das strings "arg"
 
-            while (MI[linha].comando[i] != ' ' && MI[linha].comando[i] != '\n' && MI[linha].comando[i] != '\0') // testa o fim do argumento
+            while (comando[linha][i] != ' ' && comando[linha][i] != '\n' && comando[linha][i] != '\0') // testa o fim do argumento
             {
-                arg1[i1] = MI[linha].comando[i];
+                arg1[i1] = comando[linha][i];
 
                 i++; // Incrementa o indice da string do comando inteiro
                 i1++; // Incrementa o indice da string do argumento
@@ -38,9 +42,9 @@ void executaPrograma(Leitor* leitor) {
             arg1[i1] = '\0'; // Finaliza a string
             i++;
 
-            while (MI[linha].comando[i] != ' ' && MI[linha].comando[i] != '\n' && MI[linha].comando[i] != '\0') // testa o fim do argumento
+            while (comando[linha][i] != ' ' && comando[linha][i] != '\n' && comando[linha][i] != '\0') // testa o fim do argumento
             { 
-                arg2[i2] = MI[linha].comando[i];
+                arg2[i2] = comando[linha][i];
 
                 i++; // Incrementa o indice da string do comando inteiro
                 i2++; // Incrementa o indice da string do argumento
@@ -58,9 +62,9 @@ void executaPrograma(Leitor* leitor) {
             char arg1[10], arg2[10]; // Os 2 argumentos necessarios para o opcode SUB
             int i1 = 0, i2 = 0; // Indices para cada uma das strings "arg"
 
-            while (MI[linha].comando[i] != ' ' && MI[linha].comando[i] != '\n' && MI[linha].comando[i] != '\0') // testa o fim do argumento
+            while (comando[linha][i] != ' ' && comando[linha][i] != '\n' && comando[linha][i] != '\0') // testa o fim do argumento
             {
-                arg1[i1] = MI[linha].comando[i];
+                arg1[i1] = comando[linha][i];
 
                 i++; // Incrementa o indice da string do comando inteiro
                 i1++; // Incrementa o indice da string do argumento
@@ -68,9 +72,9 @@ void executaPrograma(Leitor* leitor) {
             arg1[i1] = '\0'; // Finaliza a string
             i++;
 
-            while (MI[linha].comando[i] != ' ' && MI[linha].comando[i] != '\n' && MI[linha].comando[i] != '\0') // testa o fim do argumento
+            while (comando[linha][i] != ' ' && comando[linha][i] != '\n' && comando[linha][i] != '\0') // testa o fim do argumento
             { 
-                arg2[i2] = MI[linha].comando[i];
+                arg2[i2] = comando[linha][i];
 
                 i++; // Incrementa o indice da string do comando inteiro
                 i2++; // Incrementa o indice da string do argumento
@@ -88,9 +92,9 @@ void executaPrograma(Leitor* leitor) {
             char arg1[10], arg2[10]; // Os 2 argumentos necessarios para o opcode MUL
             int i1 = 0, i2 = 0; // Indices para cada uma das strings "arg"
 
-            while (MI[linha].comando[i] != ' ' && MI[linha].comando[i] != '\n' && MI[linha].comando[i] != '\0') // testa o fim do argumento
+            while (comando[linha][i] != ' ' && comando[linha][i] != '\n' && comando[linha][i] != '\0') // testa o fim do argumento
             {
-                arg1[i1] = MI[linha].comando[i];
+                arg1[i1] = comando[linha][i];
 
                 i++; // Incrementa o indice da string do comando inteiro
                 i1++; // Incrementa o indice da string do argumento
@@ -98,9 +102,9 @@ void executaPrograma(Leitor* leitor) {
             arg1[i1] = '\0'; // Finaliza a string
             i++;
 
-            while (MI[linha].comando[i] != ' ' && MI[linha].comando[i] != '\n' && MI[linha].comando[i] != '\0') // testa o fim do argumento
+            while (comando[linha][i] != ' ' && comando[linha][i] != '\n' && comando[linha][i] != '\0') // testa o fim do argumento
             { 
-                arg2[i2] = MI[linha].comando[i];
+                arg2[i2] = comando[linha][i];
 
                 i++; // Incrementa o indice da string do comando inteiro
                 i2++; // Incrementa o indice da string do argumento
@@ -118,9 +122,9 @@ void executaPrograma(Leitor* leitor) {
             char arg1[10], arg2[10]; // Os 2 argumentos necessarios para o opcode DIV
             int i1 = 0, i2 = 0; // Indices para cada uma das strings "arg"
 
-            while (MI[linha].comando[i] != ' ' && MI[linha].comando[i] != '\n' && MI[linha].comando[i] != '\0') // testa o fim do argumento
+            while (comando[linha][i] != ' ' && comando[linha][i] != '\n' && comando[linha][i] != '\0') // testa o fim do argumento
             {
-                arg1[i1] = MI[linha].comando[i];
+                arg1[i1] = comando[linha][i];
 
                 i++; // Incrementa o indice da string do comando inteiro
                 i1++; // Incrementa o indice da string do argumento
@@ -128,9 +132,9 @@ void executaPrograma(Leitor* leitor) {
             arg1[i1] = '\0'; // Finaliza a string
             i++;
 
-            while (MI[linha].comando[i] != ' ' && MI[linha].comando[i] != '\n' && MI[linha].comando[i] != '\0') // testa o fim do argumento
+            while (comando[linha][i] != ' ' && comando[linha][i] != '\n' && comando[linha][i] != '\0') // testa o fim do argumento
             { 
-                arg2[i2] = MI[linha].comando[i];
+                arg2[i2] = comando[linha][i];
 
                 i++; // Incrementa o indice da string do comando inteiro
                 i2++; // Incrementa o indice da string do argumento
@@ -148,9 +152,9 @@ void executaPrograma(Leitor* leitor) {
             char arg1[10], arg2[10]; // Os 2 argumentos necessarios para o opcode REM
             int i1 = 0, i2 = 0; // Indices para cada uma das strings "arg"
 
-            while (MI[linha].comando[i] != ' ' && MI[linha].comando[i] != '\n' && MI[linha].comando[i] != '\0') // testa o fim do argumento
+            while (comando[linha][i] != ' ' && comando[linha][i] != '\n' && comando[linha][i] != '\0') // testa o fim do argumento
             {
-                arg1[i1] = MI[linha].comando[i];
+                arg1[i1] = comando[linha][i];
 
                 i++; // Incrementa o indice da string do comando inteiro
                 i1++; // Incrementa o indice da string do argumento
@@ -158,9 +162,9 @@ void executaPrograma(Leitor* leitor) {
             arg1[i1] = '\0'; // Finaliza a string
             i++;
 
-            while (MI[linha].comando[i] != ' ' && MI[linha].comando[i] != '\n' && MI[linha].comando[i] != '\0') // testa o fim do argumento
+            while (comando[linha][i] != ' ' && comando[linha][i] != '\n' && comando[linha][i] != '\0') // testa o fim do argumento
             { 
-                arg2[i2] = MI[linha].comando[i];
+                arg2[i2] = comando[linha][i];
 
                 i++; // Incrementa o indice da string do comando inteiro
                 i2++; // Incrementa o indice da string do argumento
@@ -178,9 +182,9 @@ void executaPrograma(Leitor* leitor) {
             char arg[10]; // O argumento necessario para o opcode STO
             int i1 = 0; // Indice para a string arg
 
-            while (MI[linha].comando[i] != ' ' && MI[linha].comando[i] != '\n' && MI[linha].comando[i] != '\0') // testa o fim do argumento
+            while (comando[linha][i] != ' ' && comando[linha][i] != '\n' && comando[linha][i] != '\0') // testa o fim do argumento
             {
-                arg[i1] = MI[linha].comando[i];
+                arg[i1] = comando[linha][i];
 
                 i++; // Incrementa o indice da string do comando inteiro
                 i1++; // Incrementa o indice da string do argumento
@@ -198,9 +202,9 @@ void executaPrograma(Leitor* leitor) {
             char arg1[10], arg2[10]; // Os 2 argumentos necessarios para o opcode STI
             int i1 = 0, i2 = 0; // Indices para cada uma das strings "arg"
 
-            while (MI[linha].comando[i] != ' ' && MI[linha].comando[i] != '\n' && MI[linha].comando[i] != '\0') // testa o fim do argumento
+            while (comando[linha][i] != ' ' && comando[linha][i] != '\n' && comando[linha][i] != '\0') // testa o fim do argumento
             {
-                arg1[i1] = MI[linha].comando[i];
+                arg1[i1] = comando[linha][i];
 
                 i++; // Incrementa o indice da string do comando inteiro
                 i1++; // Incrementa o indice da string do argumento
@@ -208,9 +212,9 @@ void executaPrograma(Leitor* leitor) {
             arg1[i1] = '\0'; // Finaliza a string
             i++;
 
-            while (MI[linha].comando[i] != ' ' && MI[linha].comando[i] != '\n' && MI[linha].comando[i] != '\0') // testa o fim do argumento
+            while (comando[linha][i] != ' ' && comando[linha][i] != '\n' && comando[linha][i] != '\0') // testa o fim do argumento
             { 
-                arg2[i2] = MI[linha].comando[i];
+                arg2[i2] = comando[linha][i];
 
                 i++; // Incrementa o indice da string do comando inteiro
                 i2++; // Incrementa o indice da string do argumento
@@ -228,9 +232,9 @@ void executaPrograma(Leitor* leitor) {
             char arg1[10], arg2[10], arg3[10]; // Os 3 argumentos necessarios para o opcode BEQ
             int i1 = 0, i2 = 0, i3 = 0; // Indices para cada uma das strings "arg"
 
-            while (MI[linha].comando[i] != ' ' && MI[linha].comando[i] != '\n' && MI[linha].comando[i] != '\0') // testa o fim do argumento
+            while (comando[linha][i] != ' ' && comando[linha][i] != '\n' && comando[linha][i] != '\0') // testa o fim do argumento
             {
-                arg1[i1] = MI[linha].comando[i];
+                arg1[i1] = comando[linha][i];
 
                 i++; // Incrementa o indice da string do comando inteiro
                 i1++; // Incrementa o indice da string do argumento
@@ -238,9 +242,9 @@ void executaPrograma(Leitor* leitor) {
             arg1[i1] = '\0'; // Finaliza a string
             i++;
 
-            while (MI[linha].comando[i] != ' ' && MI[linha].comando[i] != '\n' && MI[linha].comando[i] != '\0') // testa o fim do argumento
+            while (comando[linha][i] != ' ' && comando[linha][i] != '\n' && comando[linha][i] != '\0') // testa o fim do argumento
             { 
-                arg2[i2] = MI[linha].comando[i];
+                arg2[i2] = comando[linha][i];
 
                 i++; // Incrementa o indice da string do comando inteiro
                 i2++; // Incrementa o indice da string do argumento
@@ -248,9 +252,9 @@ void executaPrograma(Leitor* leitor) {
             arg2[i2] = '\0'; // Finaliza a string
             i++;
 
-            while (MI[linha].comando[i] != ' ' && MI[linha].comando[i] != '\n' && MI[linha].comando[i] != '\0') // testa o fim do argumento
+            while (comando[linha][i] != ' ' && comando[linha][i] != '\n' && comando[linha][i] != '\0') // testa o fim do argumento
             { 
-                arg3[i3] = MI[linha].comando[i];
+                arg3[i3] = comando[linha][i];
 
                 i++; // Incrementa o indice da string do comando inteiro
                 i3++; // Incrementa o indice da string do argumento
@@ -269,9 +273,9 @@ void executaPrograma(Leitor* leitor) {
             char arg1[10], arg2[10], arg3[10]; // Os 3 argumentos necessarios para o opcode BLT
             int i1 = 0, i2 = 0, i3 = 0; // Indices para cada uma das strings "arg"
 
-            while (MI[linha].comando[i] != ' ' && MI[linha].comando[i] != '\n' && MI[linha].comando[i] != '\0') // testa o fim do argumento
+            while (comando[linha][i] != ' ' && comando[linha][i] != '\n' && comando[linha][i] != '\0') // testa o fim do argumento
             {
-                arg1[i1] = MI[linha].comando[i];
+                arg1[i1] = comando[linha][i];
 
                 i++; // Incrementa o indice da string do comando inteiro
                 i1++; // Incrementa o indice da string do argumento
@@ -279,9 +283,9 @@ void executaPrograma(Leitor* leitor) {
             arg1[i1] = '\0'; // Finaliza a string
             i++;
 
-            while (MI[linha].comando[i] != ' ' && MI[linha].comando[i] != '\n' && MI[linha].comando[i] != '\0') // testa o fim do argumento
+            while (comando[linha][i] != ' ' && comando[linha][i] != '\n' && comando[linha][i] != '\0') // testa o fim do argumento
             { 
-                arg2[i2] = MI[linha].comando[i];
+                arg2[i2] = comando[linha][i];
 
                 i++; // Incrementa o indice da string do comando inteiro
                 i2++; // Incrementa o indice da string do argumento
@@ -289,9 +293,9 @@ void executaPrograma(Leitor* leitor) {
             arg2[i2] = '\0'; // Finaliza a string
             i++;
 
-            while (MI[linha].comando[i] != ' ' && MI[linha].comando[i] != '\n' && MI[linha].comando[i] != '\0') // testa o fim do argumento
+            while (comando[linha][i] != ' ' && comando[linha][i] != '\n' && comando[linha][i] != '\0') // testa o fim do argumento
             { 
-                arg3[i3] = MI[linha].comando[i];
+                arg3[i3] = comando[linha][i];
 
                 i++; // Incrementa o indice da string do comando inteiro
                 i3++; // Incrementa o indice da string do argumento
@@ -310,9 +314,9 @@ void executaPrograma(Leitor* leitor) {
             char arg1[10]; // O argumento necessario para o opcode JMP
             int i1 = 0; // Indice para a string arg
 
-            while (MI[linha].comando[i] != ' ' && MI[linha].comando[i] != '\n' && MI[linha].comando[i] != '\0') // testa o fim do argumento
+            while (comando[linha][i] != ' ' && comando[linha][i] != '\n' && comando[linha][i] != '\0') // testa o fim do argumento
             {
-                arg1[i1] = MI[linha].comando[i];
+                arg1[i1] = comando[linha][i];
 
                 i++; // Incrementa o indice da string do comando inteiro
                 i1++; // Incrementa o indice da string do argumento

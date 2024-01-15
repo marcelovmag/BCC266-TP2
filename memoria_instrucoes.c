@@ -1,32 +1,47 @@
 #include "memoria_instrucoes.h"
+#define STRMAX 34
 
-int contaLinhas(FILE* programa) {
+int contaLinhas(FILE** programa) {
     int count = 0;
-    char dump[11];
+    char dump[STRMAX];
 
-    while (!feof(programa)) {
+    fseek(*programa, 0, SEEK_SET);
+
+    while (!feof(*programa)) {
         count++;
-        fgets(dump, 10, programa);
+        fgets(dump, 33, *programa);
     }
+
+    return count;
 }
 
-void guardaPrograma(FILE* programa, MInst** memoria) {
+void guardaPrograma(char* programaNome, MInst* memoria) {
+
+    FILE* programa = fopen(programaNome, "r");
+
+    memoria->n = contaLinhas(&programa);
+
     fseek(programa, 0, SEEK_SET);
 
-    int n = contaLinhas(programa);
+    memoria->comando = malloc(sizeof(char*) * memoria->n);
 
-    fseek(programa, 0, SEEK_SET);
-
-    *memoria = malloc(sizeof(MInst) * n);
-
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < memoria->n; i++)
     {
-        fgets((*memoria)[i].comando, 10, programa);
-        (*memoria)[i].linha = n;
+        memoria->comando[i] = malloc(sizeof(char) * STRMAX);
     }
     
-} // armazena todos os comandos do programa, linha a linha, em um vetor
 
-void liberaMemoriaInst(MInst** memoria) {
-    free(*memoria);
+    for (int i = 0; i < memoria->n; i++) 
+        fgets(memoria->comando[i], STRMAX - 1, programa);
+    
+    fclose(programa);
+} // armazena todos os comandos do programa, linha a linha, no vetor de strings "comando"
+
+void liberaMemoriaInst(MInst* memoria) {
+    for (int i = 0; i < memoria->n; i++)
+    {
+        free(memoria->comando[i]);
+    }
+
+    free(memoria->comando);
 }
