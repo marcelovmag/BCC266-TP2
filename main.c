@@ -36,16 +36,16 @@ int main() {
             break;
 
         guardaPrograma(programa, &memoriaInstrucoes);
-        printf("guardaPrograma: OK\n");
+        //printf("guardaPrograma: OK\n");
 
         leitor = newLeitor(&arithmeticLogicUnit, &bancoDeRegistradores, &memoriaInstrucoes, &memoriaPrincipal);
-        printf("newLeitor: OK\n");
+        //printf("newLeitor: OK\n");
 
         executaPrograma(&leitor);
-        printf("executaPrograma: OK\n");
+        //printf("\nexecutaPrograma: OK\n");
 
         liberaMemoriaInst(&memoriaInstrucoes);
-        printf("liberaMemoriaInst: OK\n");
+        //printf("liberaMemoriaInst: OK\n");
     }
     
     fecha(&memoriaPrincipal); // funcao da memoria principal que fecha o arquivo de memoria principal

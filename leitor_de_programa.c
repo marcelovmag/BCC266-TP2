@@ -25,7 +25,7 @@ void executaPrograma(Leitor* leitor) {
         }
         opc[4] = '\0';
 
-        int i = 5;
+        int i = 4;
 
         if (!strcmp(opc, "ADD"))
         {

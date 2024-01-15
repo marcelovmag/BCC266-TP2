@@ -50,7 +50,8 @@ void beq(Leitor* leitor, int re1, int re2, int linha) {
     igual(ALU);
     
     if (getACC(ALU))
-        leitor->linha = linha - 1;
+        leitor->linha = linha - 2;
+        // linha -2 pois ao fim da leitura dessa linha, "linha" já será incrementado e ainda por "linha" ser um vetor (começa em 0) e queremos a linha do programa, contando a partir de 1
 }
 
 void blt(Leitor* leitor, int re1, int re2, int linha) {
@@ -59,11 +60,13 @@ void blt(Leitor* leitor, int re1, int re2, int linha) {
     menor(ALU);
     
     if (getACC(ALU))
-        leitor->linha = linha - 1;
+        leitor->linha = linha - 2;
+    // linha -2 pois ao fim da leitura dessa linha, "linha" já será incrementado e ainda por "linha" ser um vetor (começa em 0) e queremos a linha do programa, contando a partir de 1
 }
 
 void jmp(Leitor* leitor, int linha) {
-    leitor->linha = linha - 1;
+    leitor->linha = linha - 2;
+    // linha -2 pois ao fim da leitura dessa linha, "linha" já será incrementado e ainda por "linha" ser um vetor (começa em 0) e queremos a linha do programa, contando a partir de 1
 }
 
 void dsp(Leitor* leitor) {
