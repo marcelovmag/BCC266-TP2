@@ -1,4 +1,4 @@
-#include "memoria_principal.h"
+#include "libs/memoria_principal.h"
 
 void inicializa(MP* mp) {
     mp->memoria = fopen("memoria.dat", "wb+");

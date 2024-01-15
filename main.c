@@ -1,6 +1,6 @@
 int main() {
 
-    #include "leitor_de_programa.h"
+    #include "libs/leitor_de_programa.h"
 
     return 0;
 }

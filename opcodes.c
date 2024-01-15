@@ -1,4 +1,4 @@
-#include "opcodes.h"
+#include "libs/opcodes.h"
 
 #define ALU leitor->alu
 #define R1 leitor->banco->registrador[r1]

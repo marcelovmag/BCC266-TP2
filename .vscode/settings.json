@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "opcodes.h": "c"
+        "opcodes.h": "c",
+        "alu.h": "c",
+        "string.h": "c"
     }
 }
