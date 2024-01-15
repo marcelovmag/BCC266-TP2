@@ -25,7 +25,7 @@ void guardaPrograma(FILE* programa, MInst** memoria) {
         (*memoria)[i].linha = n;
     }
     
-}
+} // armazena todos os comandos do programa, linha a linha, em um vetor
 
 void liberaMemoriaInst(MInst** memoria) {
     free(*memoria);
