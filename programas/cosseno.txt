@@ -1,0 +1,81 @@
+STI 0 0
+STI 1 1
+STI 2 2
+STI 6 0
+SUB 6 1
+// 6 armazena -1
+STO 6
+// 3 armazena n
+STI 3 0
+// 4 armazena x
+STI 4 30
+// 5 armazena aux1
+STI 5 0
+// 7 armazena maxIteracoes
+STI 7 10
+// 8 armazena aux2
+STI 8 0
+// 9 armazena saida
+STI 9 0
+// 10 armzn contadorGenerico
+STI 10 0
+// 11 armazena aux3
+STI 11 0
+// começo do loop
+BEQ 3 7 80
+STI 10 0
+STI 5 1
+// loop -1^n ini
+BEQ 3 10 36
+MUL 5 6
+STO 5
+ADD 10 1
+STO 10
+JMP 29
+// loop -1^n fim
+STI 10 0
+MUL 3 2
+STO 8
+STO 11
+// loop fat 2n ini
+BEQ 8 10 49
+MUL 11 10
+STO 11
+ADD 10 1
+STO 10
+JMP 41
+// loop fat 2n fim
+// trata 0!
+BEQ 8 0 51
+JMP 53
+STI 8 1
+// divisao dos termos
+DIV 5 8
+STO 5
+// 2n
+MUL 2 3
+STO 11
+STI 10 0
+STO 8 1
+// loop x^2n ini
+BEQ 11 10 69
+MUL 8 4
+STO 8
+ADD 10 1
+STO 10
+JMP 61
+// loop x^2n fim
+// multiplica os termos
+MUL 5 8
+STO 5
+// soma na saida
+ADD 5 9
+STO 9
+// n++
+ADD 3 1
+STO 3
+// volta pro começo
+JMP 25
+// fim do loop
+DSP 9
+// fim do programa
