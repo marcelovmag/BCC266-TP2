@@ -22,7 +22,7 @@ STI 10 0
 // 11 armazena aux3
 STI 11 0
 // começo do loop
-BEQ 3 7 79
+BEQ 3 7 82
 STI 10 0
 STI 5 1
 // loop -1^n ini
@@ -73,8 +73,11 @@ STO 5
 // soma na saida
 ADD 5 9
 STO 9
+// n++
+ADD 3 1
+STO 3
 // volta pro começo
 JMP 25
 // fim do loop
-STO 0 0
+DSP 9
 // fim do programa
